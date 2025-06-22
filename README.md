@@ -57,11 +57,46 @@ Hệ thống hoạt động theo một pipeline xử lý thông minh và hiệu 
     -   Một module phân tích màu sắc dựa trên không gian màu HSV sẽ tìm ra màu chủ đạo.
 5.  **Tổng hợp & Hiển thị:** Tất cả kết quả (bounding box, nhãn loại, nhãn trạng thái, nhãn độ chín, màu chủ đạo) được tổng hợp và trả về giao diện web một cách trực quan.
 
-<p align="center">
-  <img src="https://i.imgur.com/Wp7P0iQ.png" alt="Sơ đồ kiến trúc" width="600"/>
-  <br>
-  <em>Sơ đồ luồng xử lý của hệ thống</em>
-</p>
+graph TD
+    subgraph "Giai đoạn 1: Giao diện & Nhập liệu"
+        A[Người dùng tải ảnh lên qua Giao diện Web (Flask)] --> B{app.py nhận yêu cầu};
+    end
+
+    subgraph "Giai đoạn 2: Phát hiện Đối tượng (YOLOv8n)"
+        B --> C[Tải mô hình YOLOv8n<br/>(yolo11n.pt)];
+        C --> D{Phát hiện Táo/Chuối/Cam};
+        D --> E[Lấy tọa độ Bounding Box<br/>và tên lớp (Táo/Chuối/Cam)];
+    end
+
+    subgraph "Giai đoạn 3: Phân tích Song song"
+        E --> F[<b>Ảnh Gốc</b>]
+        E --> G[<b>Ảnh đã cắt (Cropped)</b><br/>dựa trên Bounding Box]
+
+        F --> H1[Luồng A:<br/>Phân loại Tươi/Hỏng];
+        H1 --> I1[Tải mô hình CNN (Keras)<br/>fruit_state_classifier.keras];
+        I1 --> J1[Dự đoán<br/>(Táo Tươi, Chuối Hỏng,...)];
+
+        F --> H2[Luồng B:<br/>Phân loại Xanh/Chín (Học sâu)];
+        H2 --> I2[Tải mô hình MobileNetV2 (PyTorch)<br/>fruit_ripeness_model_pytorch.pth];
+        I2 --> J2[Dự đoán<br/>(Apple Ripe, Banana Unripe,...)];
+
+        G --> H3[Luồng C:<br/>Phân tích Màu sắc (Rule-based)];
+        H3 --> I3[Trích xuất màu chủ đạo<br/>(dominant_color.py)];
+        I3 --> J3[Áp dụng quy tắc<br/>để gán nhãn "XANH"/"CHÍN"];
+    end
+
+    subgraph "Giai đoạn 4: Tổng hợp & Hiển thị Kết quả"
+        J1 --> K{app.py tổng hợp kết quả};
+        J2 --> K;
+        J3 --> K;
+        E --> K;
+        K --> L[Hiển thị trên trang web:<br/>- Ảnh gốc + Bounding Box<br/>- Kết quả Tươi/Hỏng<br/>- Kết quả Xanh/Chín (Học sâu)<br/>- Kết quả Xanh/Chín (Màu sắc)<br/>- Các màu chủ đạo];
+    end
+
+    style A fill:#cde4ff,stroke:#6699ff,stroke-width:2px
+    style L fill:#d4edda,stroke:#155724,stroke-width:2px
+    style B fill:#fff3cd,stroke:#856404,stroke-width:2px
+    style K fill:#fff3cd,stroke:#856404,stroke-width:2px
 
 ## 🛠️ Công nghệ sử dụng
 
