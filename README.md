@@ -66,7 +66,7 @@ graph TD
 
     subgraph "Giai đoạn 2: Phát hiện Đối tượng (YOLOv8n)"
         B --> C[Tải mô hình YOLOv8n<br/>(yolo11n.pt)];
-        C --> D{Phát hiện Táo/Chuối/Cam};
+        C --> D[Phát hiện Táo/Chuối/Cam];
         D --> E[Lấy tọa độ Bounding Box<br/>và tên lớp];
     end
 
