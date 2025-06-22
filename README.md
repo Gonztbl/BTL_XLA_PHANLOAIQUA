@@ -3,6 +3,7 @@
 
 Dự án này xây dựng một hệ thống hoàn chỉnh sử dụng các mô hình Deep Learning để tự động nhận diện loại trái cây (táo, chuối, cam), phân loại tình trạng (tươi/hỏng) và xác định mức độ chín (xanh/chín) từ hình ảnh.
 
+![Screenshot 2025-06-22 103508](https://github.com/user-attachments/assets/b9a9a6d2-77e5-4efd-94d2-304f2ea1faca)
 
 ## 📖 Mục lục
 - [Tính năng nổi bật](#-tính-năng-nổi-bật)
@@ -27,8 +28,10 @@ Dự án này xây dựng một hệ thống hoàn chỉnh sử dụng các mô 
 -   **Giao diện Web trực quan:** Xây dựng bằng **Flask**, cho phép người dùng dễ dàng tải ảnh lên hoặc dán URL để nhận kết quả phân tích tức thì.
 
 ## 📸 Demo
+![Screenshot 2025-06-22 103508](https://github.com/user-attachments/assets/06ce0a54-0d74-4fcd-a906-7686dcc04bfd)
 
 
+![Screenshot 2025-06-20 142614](https://github.com/user-attachments/assets/5b1ca941-4958-4d08-b77d-e98e7f423c49)
 
 ## 🏗️ Kiến trúc hệ thống
 
