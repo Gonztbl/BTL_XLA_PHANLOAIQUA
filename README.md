@@ -71,8 +71,8 @@ graph TD
     end
 
     subgraph "Giai đoạn 3: Phân tích Song song"
-        E --> F[<b>Ảnh Gốc</b>]
-        E --> G[<b>Ảnh đã cắt (Cropped)</b><br/>dựa trên Bounding Box]
+        E --> F[<b>Ảnh Gốc</b>];
+        E --> G[<b>Ảnh đã cắt (Cropped)</b><br/>dựa trên Bounding Box];
 
         F --> H1[Luồng A:<br/>Phân loại Tươi/Hỏng];
         H1 --> I1[Tải mô hình CNN (Keras)<br/>fruit_state_classifier.keras];
@@ -91,7 +91,6 @@ graph TD
         J1 & J2 & J3 & E --> K{app.py tổng hợp kết quả};
         K --> L[Hiển thị trên trang web];
     end
-
 ## 🛠️ Công nghệ sử dụng
 
 | Lĩnh vực | Công nghệ |
