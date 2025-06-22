@@ -58,41 +58,9 @@ Hệ thống hoạt động theo một pipeline xử lý thông minh và hiệu 
     -   Đồng thời, ảnh crop cũng được đưa vào mô hình **MobileNetV2 (PyTorch)** để phân loại **xanh/chín**.
     -   Một module phân tích màu sắc dựa trên không gian màu HSV sẽ tìm ra màu chủ đạo.
 5.  **Tổng hợp & Hiển thị:** Tất cả kết quả (bounding box, nhãn loại, nhãn trạng thái, nhãn độ chín, màu chủ đạo) được tổng hợp và trả về giao diện web một cách trực quan.
-```mermaid
-graph TD
-    subgraph "Giai đoạn 1: Giao diện & Nhập liệu"
-        A[Người dùng tải ảnh lên qua Giao diện Web (Flask)] --> B{app.py nhận yêu cầu};
-    end
 
-    subgraph "Giai đoạn 2: Phát hiện Đối tượng (YOLOv8n)"
-        B --> C[Tải mô hình YOLOv8n<br/>(yolo11n.pt)];
-        C --> D[Phát hiện Táo/Chuối/Cam];
-        D --> E[Lấy tọa độ Bounding Box<br/>và tên lớp];
-    end
-
-    subgraph "Giai đoạn 3: Phân tích Song song"
-        E --> F[<b>Ảnh Gốc</b>];
-        E --> G[<b>Ảnh đã cắt (Cropped)</b><br/>dựa trên Bounding Box];
-
-        F --> H1[Luồng A:<br/>Phân loại Tươi/Hỏng];
-        H1 --> I1[Tải mô hình CNN (Keras)<br/>fruit_state_classifier.keras];
-        I1 --> J1[Dự đoán<br/>(Táo Tươi, Chuối Hỏng,...)];
-
-        F --> H2[Luồng B:<br/>Phân loại Xanh/Chín (Học sâu)];
-        H2 --> I2[Tải mô hình MobileNetV2 (PyTorch)<br/>fruit_ripeness_model_pytorch.pth];
-        I2 --> J2[Dự đoán<br/>(Apple Ripe, Banana Unripe,...)];
-
-        G --> H3[Luồng C:<br/>Phân tích Màu sắc (Rule-based)];
-        H3 --> I3[Trích xuất màu chủ đạo<br/>(dominant_color.py)];
-        I3 --> J3[Áp dụng quy tắc<br/>để gán nhãn "XANH"/"CHÍN"];
-    end
-
-    subgraph "Giai đoạn 4: Tổng hợp & Hiển thị"
-        J1 & J2 & J3 & E --> K{app.py tổng hợp kết quả};
-        K --> L[Hiển thị trên trang web];
-    end
-```
 ## 🛠️ Công nghệ sử dụng
+![Uploading ChatGPT Image 10_59_15 22 thg 6, 2025.png…]()
 
 | Lĩnh vực | Công nghệ |
 | :--- | :--- |
