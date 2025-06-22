@@ -33,6 +33,12 @@ Dự án này xây dựng một hệ thống hoàn chỉnh sử dụng các mô 
 
 ![Screenshot 2025-06-20 142614](https://github.com/user-attachments/assets/5b1ca941-4958-4d08-b77d-e98e7f423c49)
 
+![Screenshot 2025-06-22 103916](https://github.com/user-attachments/assets/da9c6ef9-d601-498b-a2fa-0e95c8b04d49)
+
+![Screenshot 2025-06-22 103903](https://github.com/user-attachments/assets/a94e5cbd-c53e-47fa-b08d-971fb7986587)
+
+![Screenshot 2025-06-22 103849](https://github.com/user-attachments/assets/01dbbeb8-f0c1-43e2-9153-d5e507f3d508)
+
 ## 🏗️ Kiến trúc hệ thống
 
 Hệ thống hoạt động theo một pipeline xử lý thông minh và hiệu quả:
