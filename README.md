@@ -39,6 +39,9 @@ Dự án này xây dựng một hệ thống hoàn chỉnh sử dụng các mô 
 
 ![Screenshot 2025-06-22 103849](https://github.com/user-attachments/assets/01dbbeb8-f0c1-43e2-9153-d5e507f3d508)
 ![Screenshot 2025-06-22 103835](https://github.com/user-attachments/assets/79318797-9773-4233-be21-f5ceef5a7a2b)
+![Screenshot 2025-06-22 104250](https://github.com/user-attachments/assets/e8fe3db7-283d-48e6-9903-01dade1c087d)
+![Screenshot 2025-06-22 104457](https://github.com/user-attachments/assets/794560a5-91fc-42a0-939b-307f803fddd5)
+
 
 
 ## 🏗️ Kiến trúc hệ thống
