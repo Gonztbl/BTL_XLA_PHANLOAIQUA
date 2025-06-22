@@ -45,6 +45,8 @@ Dự án này xây dựng một hệ thống hoàn chỉnh sử dụng các mô 
 
 
 ## 🏗️ Kiến trúc hệ thống
+![Screenshot 2025-06-22 105032](https://github.com/user-attachments/assets/2f70a785-b581-40fb-9913-ab3180f41de3)
+
 
 Hệ thống hoạt động theo một pipeline xử lý thông minh và hiệu quả:
 
@@ -65,7 +67,7 @@ graph TD
     subgraph "Giai đoạn 2: Phát hiện Đối tượng (YOLOv8n)"
         B --> C[Tải mô hình YOLOv8n<br/>(yolo11n.pt)];
         C --> D{Phát hiện Táo/Chuối/Cam};
-        D --> E[Lấy tọa độ Bounding Box<br/>và tên lớp (Táo/Chuối/Cam)];
+        D --> E[Lấy tọa độ Bounding Box<br/>và tên lớp];
     end
 
     subgraph "Giai đoạn 3: Phân tích Song song"
@@ -85,18 +87,10 @@ graph TD
         I3 --> J3[Áp dụng quy tắc<br/>để gán nhãn "XANH"/"CHÍN"];
     end
 
-    subgraph "Giai đoạn 4: Tổng hợp & Hiển thị Kết quả"
-        J1 --> K{app.py tổng hợp kết quả};
-        J2 --> K;
-        J3 --> K;
-        E --> K;
-        K --> L[Hiển thị trên trang web:<br/>- Ảnh gốc + Bounding Box<br/>- Kết quả Tươi/Hỏng<br/>- Kết quả Xanh/Chín (Học sâu)<br/>- Kết quả Xanh/Chín (Màu sắc)<br/>- Các màu chủ đạo];
+    subgraph "Giai đoạn 4: Tổng hợp & Hiển thị"
+        J1 & J2 & J3 & E --> K{app.py tổng hợp kết quả};
+        K --> L[Hiển thị trên trang web];
     end
-
-    style A fill:#cde4ff,stroke:#6699ff,stroke-width:2px
-    style L fill:#d4edda,stroke:#155724,stroke-width:2px
-    style B fill:#fff3cd,stroke:#856404,stroke-width:2px
-    style K fill:#fff3cd,stroke:#856404,stroke-width:2px
 
 ## 🛠️ Công nghệ sử dụng
 
