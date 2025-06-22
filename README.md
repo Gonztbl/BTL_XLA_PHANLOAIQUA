@@ -58,7 +58,7 @@ Hệ thống hoạt động theo một pipeline xử lý thông minh và hiệu 
     -   Đồng thời, ảnh crop cũng được đưa vào mô hình **MobileNetV2 (PyTorch)** để phân loại **xanh/chín**.
     -   Một module phân tích màu sắc dựa trên không gian màu HSV sẽ tìm ra màu chủ đạo.
 5.  **Tổng hợp & Hiển thị:** Tất cả kết quả (bounding box, nhãn loại, nhãn trạng thái, nhãn độ chín, màu chủ đạo) được tổng hợp và trả về giao diện web một cách trực quan.
-
+```mermaid
 graph TD
     subgraph "Giai đoạn 1: Giao diện & Nhập liệu"
         A[Người dùng tải ảnh lên qua Giao diện Web (Flask)] --> B{app.py nhận yêu cầu};
@@ -91,6 +91,7 @@ graph TD
         J1 & J2 & J3 & E --> K{app.py tổng hợp kết quả};
         K --> L[Hiển thị trên trang web];
     end
+```
 ## 🛠️ Công nghệ sử dụng
 
 | Lĩnh vực | Công nghệ |
